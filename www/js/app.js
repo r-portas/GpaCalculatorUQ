@@ -35,6 +35,26 @@ angular.module('starter', ['ionic', 'ngCordova'])
     $scope.modal.remove();
   });
 
+  $ionicModal.fromTemplateUrl('help-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.helpModal = modal
+  })
+
+  $scope.openHelpModal = function() {
+    $scope.helpModal.show()
+  }
+
+  $scope.closeHelpModal = function() {
+    $scope.calcGpa();
+    $scope.helpModal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.helpModal.remove();
+  });
+
   $scope.programsList = [
     {text: "Bachelor of Engineering - Honours", value: "be"},
     {text: "Other", value: "na"}

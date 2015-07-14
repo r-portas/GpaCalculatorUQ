@@ -27,8 +27,14 @@
         <div class="buttons">
           <button class="button" ng-click="openModal()">Program</button>
         </div>
-        <h1 class="title">GPA Calculator</h1>
+
+        <h1 class="title">UQ GPA Calculator</h1>
+
+        <div class="buttons" side="right">
+          <button class="button" side="right" ng-click="openHelpModal()">Help</button>
+        </div>
       </ion-header-bar>
+
       <ion-content>
         <div class="card">
           <div class="item item-text-wrap">
@@ -82,6 +88,28 @@
       </ion-radio>
 
           <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
+        </ion-content>
+      </div>
+    </script>
+
+    <script id="help-modal.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar>
+          <h1 class="title">Help</h1>
+        </ion-header-bar>
+        <ion-content>
+          <p style="padding: 10px;">
+            Add your courses using the form at the bottom of the screen.
+          </p>
+
+          <p style="padding: 10px;">
+            To remove a course, swipe a course to the left.
+          </p>
+
+          <p style="padding: 10px;">
+            WARNING: This is only a guide and may not be completely accurate. This is an unofficial app is not affiliated with UQ in any way.
+          </p>
+          <button class="button button-full button-energized" ng-click="closeHelpModal()">Done</button>
         </ion-content>
       </div>
     </script>
