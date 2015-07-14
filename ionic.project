@@ -1,0 +1,12 @@
+{
+  "name": "GpaCalc",
+  "app_id": "d3fb801d",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
