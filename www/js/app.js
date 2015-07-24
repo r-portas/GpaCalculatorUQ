@@ -65,14 +65,23 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
     // For the temp input fields
     course: null,
-    grade: null,
-    units: null
+    grade: 5,
+    units: 2
   };
 
   $scope.courses = [
     //{name: "CSSE2010", grade: 6, cNum: 2, units: 2}
   ];
 
+$scope.showAlert = function() {
+       var alertPopup = $ionicPopup.alert({
+         title: 'Don\'t eat that!',
+         template: 'It might taste good'
+       });
+       alertPopup.then(function(res) {
+         console.log('Thank you for not eating my delicious ice cream cone');
+       });
+     };
 
 $scope.calcGpa = function(){
   var prog = $scope.data.program;
@@ -120,7 +129,7 @@ $scope.calcGpaNa = function(){
 
   $scope.showPopup = function(message){
      var alertPopup = $ionicPopup.alert({
-       title: 'Alert',
+       title: 'Invalid input',
        template: message
      });
   }
@@ -156,10 +165,10 @@ $scope.calcGpaNa = function(){
         $scope.courses.indexOf(course) == -1 &&
         course.length == 8){
 
-          if (grade >= 0 && grade <= 7 && units > 0 && units <= 2){
-            var reg = new RegExp("^....(.)...$");
-            var num = reg.exec(course)[1];
-            if (num > 0 && num <= 9){
+          var reg = new RegExp("^....(.)...$");
+          var num = reg.exec(course)[1];
+          if (num > 0 && num <= 9){
+            if (grade >= 0){
 
               var c = {
                 name: course.toUpperCase(),
@@ -175,11 +184,19 @@ $scope.calcGpaNa = function(){
 
                 // Clear input
                 $scope.data.course = "";
-                $scope.data.grade = "";
+                $scope.data.grade = 5;
+              } else {
+                $scope.showPopup("Course already exists");
               }
               $scope.calcGpa();
+            } else {
+              $scope.showPopup("Grade is not valid");
             }
+          } else {
+            $scope.showPopup("Course code is not valid");
           }
+    } else {
+      $scope.showPopup("Course code is not valid");
     }
   }
 

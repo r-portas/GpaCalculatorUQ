@@ -61,12 +61,39 @@
               <input type="text" placeholder="Course (DECO2500)" ng-model="data.course">
             </label>
 
-            <label class="item item-input">
-              <input type="number" placeholder="Grade (6)" ng-model="data.grade">
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Grade
+              </div>
+              <select ng-model="data.grade">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option selected>5</option>
+                <option>6</option>
+                <option>7</option>
+              </select>
             </label>
 
-            <label class="item item-input">
+            <!-- <label class="item item-input">
+              <input type="number" placeholder="Grade (6)" ng-model="data.grade">
+            </label> -->
+
+            <!-- <label class="item item-input">
               <input type="number" placeholder="Units (2)" ng-model="data.units">
+            </label> -->
+
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Units
+              </div>
+              <select ng-model="data.units">
+                <option>1</option>
+                <option selected>2</option>
+                <option>4</option>
+              </select>
+
             </label>
 
             <button type="submit" class="button button-block button-positive">Add</button>
