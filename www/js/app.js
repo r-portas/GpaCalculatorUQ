@@ -42,13 +42,29 @@ angular.module('starter', ['ionic', 'ngCordova'])
     $scope.helpModal = modal
   })
 
+  $ionicModal.fromTemplateUrl('add-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.addModal = modal
+  })
+
   $scope.openHelpModal = function() {
     $scope.helpModal.show()
+  }
+
+  $scope.openAddModal = function() {
+    $scope.addModal.show()
   }
 
   $scope.closeHelpModal = function() {
     $scope.calcGpa();
     $scope.helpModal.hide();
+  };
+
+  $scope.closeAddModal = function() {
+    $scope.calcGpa();
+    $scope.addModal.hide();
   };
 
   $scope.$on('$destroy', function() {
@@ -179,12 +195,17 @@ $scope.calcGpaNa = function(){
               if (! $scope.checkIfExists(course)){
                 $scope.courses.push(c);
 
+                // Close the modal interface
+                $scope.closeAddModal();
+
                 // Save in SQLite
                 $scope.save(course, grade, num, units);
 
                 // Clear input
                 $scope.data.course = "";
                 $scope.data.grade = 5;
+
+
               } else {
                 $scope.showPopup("Course already exists");
               }

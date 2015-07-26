@@ -52,54 +52,13 @@
           </ion-item>
         </ion-list>
 
-        <br>
 
-        <!-- Input form -->
-        <div >
-          <form ng-submit="createCourse(data.course, data.grade, data.units)">
-            <label class="item item-input">
-              <input type="text" placeholder="Course (DECO2500)" ng-model="data.course">
-            </label>
-
-            <label class="item item-input item-select">
-              <div class="input-label">
-                Grade
-              </div>
-              <select ng-model="data.grade">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option selected>5</option>
-                <option>6</option>
-                <option>7</option>
-              </select>
-            </label>
-
-            <!-- <label class="item item-input">
-              <input type="number" placeholder="Grade (6)" ng-model="data.grade">
-            </label> -->
-
-            <!-- <label class="item item-input">
-              <input type="number" placeholder="Units (2)" ng-model="data.units">
-            </label> -->
-
-            <label class="item item-input item-select">
-              <div class="input-label">
-                Units
-              </div>
-              <select ng-model="data.units">
-                <option>1</option>
-                <option selected>2</option>
-                <option>4</option>
-              </select>
-
-            </label>
-
-            <button type="submit" class="button button-block button-positive">Add</button>
-          </form>
-        </div>
       </ion-content>
+
+      <ion-footer-bar class="bar-positive" ng-click="openAddModal()">
+        <p class="title">Add Course</p>
+        <!-- <button class="bar bar-footer bar-positive" ng-click="openAddModal()">Add Course</button> -->
+      </ion-footer-bar>
     </ion-pane>
 
     <script id="options-modal.html" type="text/ng-template">
@@ -137,6 +96,58 @@
             WARNING: This is only a guide and may not be completely accurate. This is an unofficial app is not affiliated with UQ in any way.
           </p>
           <button class="button button-full button-energized" ng-click="closeHelpModal()">Done</button>
+        </ion-content>
+      </div>
+    </script>
+
+    <script id="add-modal.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar>
+          <h1 class="title">Add Course</h1>
+        </ion-header-bar>
+        <ion-content>
+        <!-- Input form -->
+          <form ng-submit="createCourse(data.course, data.grade, data.units)">
+            <label class="item item-input">
+              <input type="text" placeholder="Course (DECO2500)" ng-model="data.course">
+            </label>
+
+            <div class="row">
+              <div class="col">
+                <label class="item item-input item-select">
+                  <div class="input-label">
+                    Grade
+                  </div>
+                  <select ng-model="data.grade">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option selected>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                  </select>
+                </label>
+              </div>
+
+            <div class="col">
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Units
+                </div>
+                <select ng-model="data.units">
+                  <option>1</option>
+                  <option selected>2</option>
+                  <option>4</option>
+                </select>
+              </label>
+            </div>
+          </div>
+            <button type="submit" class="button button-block button-positive">Add</button>
+            </form>
+            <button class="button button-block button-light" ng-click="closeAddModal()">Cancel</button>
+            </div>
+
         </ion-content>
       </div>
     </script>
